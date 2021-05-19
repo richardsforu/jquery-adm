@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+
+    <style>
+        .s1 {
+            text-align: center;
+
+        }
+        .s2{
+            font-size: 30px;
+            color: blue
+        }
+
+        .s3{
+            border-radius:20px;
+        }
+    </style>
+
+    <script>
+
+        function chnageText(){
+            var s1=document.querySelector("#d1");
+            s1.innerHTML="Text Got Changed...."
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+    <h1 class="s1">Welcome to HTML5</h1>
+    <hr />
+
+    <br/><br/> 
+    <div class="s1">
+        <input  class="s2 s3" type="text" placeholder="Your text goes here" />
+    </div>
+
+    <br/> <br/>
+
+    <div id="d1">
+        Sample data 456
+    </div>
+    <br/>
+
+
+    <button onclick="chnageText()">Change Text</button>
+
+
+
+
+</body>
+
+</html>
