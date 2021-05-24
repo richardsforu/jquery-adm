@@ -14,8 +14,6 @@ $(function() {
   //$('li').odd().prev().prev().css({'background-color':'yellow'});
 
   //---------------------------------
-
-
   $('button').on('click',function(){
     let price=$("<p class='container'> From $399.99 </p>");
     $('.vacation').append(price);

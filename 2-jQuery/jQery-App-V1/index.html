@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+    <h1>jQuery Selectors-V2</h1>
+    <hr />
+
+
+    <div id="filters">
+        <button class="btn btn-success">On Sale Now</button>
+        <button class="btn btn-danger">Expiring soon</button>
+    </div>
+
+    <hr/>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary ">Package-1</div>
+                <div class="card-body vacation onsale" data-price=25000>
+                    <h2>Hawali Vacation</h2>
+                    <hr />
+                    <h5>Package Highlight</h5>
+                    <p>3 Days 2 Nights</p>
+                    <p>4 Start Hotel Accommodation</p>
+                    <hr />
+                    <button class="price">Get Price</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary ">Package-2</div>
+                <div class="card-body vacation expiring" data-price=35000>
+                    <h2>Orland Vacation</h2>
+                    <hr />
+                    <h5>Package Highlight</h5>
+                    <p>3 Days 2 Nights</p>
+                    <p>4 Start Hotel Accommodation</p>
+                    <hr />
+                    <button class="price">Get Price</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header bg-primary ">Package-3</div>
+                <div class="card-body vacation onsale" data-price=41000>
+                    <h2>Visit Japan</h2>
+                    <hr />
+                    <h5>Package Highlight</h5>
+                    <p>3 Days 2 Nights</p>
+                    <p>4 Start Hotel Accommodation</p>
+                    <hr />
+                    <button class="price">Get Price</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
