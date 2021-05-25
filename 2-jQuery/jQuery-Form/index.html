@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body class="container">
+
+    <h1>jQuery Form</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header bg-info">Form</div>
+                <div class="card-body">
+                    <form id="post-form" autocomplete="off">
+                        <div class="form-group">
+                            <label>name</label>
+                            <input class="form-control" id="post-form-name"/>
+                        </div>
+                        <div class="form-group">
+                            <label>comment</label>
+                            <textarea class="form-control" id="post-form-comment"></textarea>
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-primary mt-2">Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div id="all-posts" class="col-6">
+
+    </div>
+
+
+
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
