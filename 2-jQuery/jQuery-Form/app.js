@@ -33,7 +33,7 @@ $(function () {
                      Name: <span class="badge bg-primary">${post.name}  </span> 
                      <span class=''>
                      <i class="bi bi-trash" id="post-delete"></i>
-                     <i class="bi bi-pencil-square"></i>
+                     <i class="bi bi-pencil-square" id="post-update"></i>
                      </span>
 
                      <hr/>
@@ -47,6 +47,8 @@ $(function () {
         })
 
     }
+
+   
 
 
     $('#all-posts').on('click','#post-delete',function(){

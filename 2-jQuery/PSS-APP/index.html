@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body class="container">
+    <div class="alert alert-info text-center">
+        <h1>PSS Application</h1>
+    </div>
+
+    <hr />
+
+    <div class="row">
+
+        <div>
+            <form id="search-query">
+                <div>
+                    <label>From</label>
+                    <input type="text" id="origin"/>
+                </div>
+
+                <div>
+                    <label>To</label>
+                    <input type="text" id="destination"/>
+                </div>
+
+                <div>
+                    <label>Date</label>
+                    <input type="text" id="flightDate"/>
+                </div>
+
+                <div>
+                    <label>Travellers</label>
+                    <input type="text" id="travellers"/>
+                </div>
+
+                <div>
+                    <button id="search-btn">Search</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div id="search-results">
+
+
+
+    </div>
+
+
+
+
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
