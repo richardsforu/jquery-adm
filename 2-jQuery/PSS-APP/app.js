@@ -72,6 +72,9 @@ $(function () {
 
 
         var bookingTemplte = `
+
+        <br/>
+        <h6>Primary passenger Information</h6>
         <hr/>
         <div>
             <div> 
@@ -85,9 +88,10 @@ $(function () {
              </div>
 
              <div>
-               <label>Gender: </label>
-                <input type="text" id="gemder"> 
-            </div>
+                 <label>Gender</label>
+                 <input type ="radio" name="pgen"/> Male
+                 <input type ="radio" name="pgen"/> Female
+             </div
 
             <div> 
                  <label>Email Address: </label>
@@ -105,19 +109,35 @@ $(function () {
         
         `
 
-        for(var i=1;i<=searchQuery.travellers-1;i++){
-           // console.log("-------- "+i);
-           var coPassengersTemplate=coPassengersTemplate=`
-            <div>
-                <input type="text" id="co-passenger-firstName${i}"/>
-            </div>
+        $('#booking-form').append(bookingTemplte);
+
+        for(var i=0; i< searchQuery.travellers-1; i++){
+           var copsg =`
+               <div>
+                    <h6>Passenger ${i+1} Information</h6>
+                    <div>
+                         <label>First Name</label>
+                         <input type ="text" id="co-firstName${i}"/>
+                    </div>
+                    <div>
+                         <label>Last Name</label>
+                         <input type ="text" id="co-lastName${i}"/>
+                    </div>
+
+                    <div>
+                         <label>Gender</label>
+                        <input type ="radio" name="gen"/> Male
+                        <input type ="radio" name="gen"/> Female
+                    </div
+               </div>
+               <br/>
+
            `
-           bookingFormDiv.append(coPassengersTemplate);
-           
+           $('#booking-form').append(copsg);
         }
+
         $('#search-results').remove();
-        bookingFormDiv.append(bookingTemplte);
-       // $('#booking-form').append(coPassengersTemplate);
+      
 
       
     }
