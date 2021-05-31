@@ -1,3 +1,31 @@
+[
+{
+    "id":10,
+    "name":"Praveen",
+    "dob":"",
+    "hobbies":["Chess","Football","Cricket"],
+    "image":"",
+    "address":[
+        {
+            "type":"temp",
+            "hno":"",
+            "street":"",
+            "city":""
+        },
+        {
+            "type":"parmanent",
+            "hno":"",
+            "street":"",
+            "city":""
+        }
+    ],
+    "phonenumber":[
+        {"type":"Home","number":""},
+        {"type":"Office","number":""},
+        {"type":"Fax","number":""}
+    ]
+},
+
 {
     "id":10,
     "name":"Praveen",
@@ -24,3 +52,5 @@
         {"type":"Fax","number":""}
     ]
 }
+
+]
