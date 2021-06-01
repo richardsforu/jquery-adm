@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.0/flatly/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script src="src/jquery.jsForm.js"></script>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<style>
+	body { background: #fafafa; }
+	.container { margin: 150px auto; }
+</style>
+<script>
+$(function(){
+	// some json data
+
+
+	var jsonData ={
+    "origin":"Delhi",
+    "destination":"Chennai",
+    "flightNumber":"SG-435",
+    "travellers":4,
+    "flightDate":"2021-05-26",
+    "passenger":{
+        "firstName":"Naresh",
+        "lastName":"Kumar",
+        "gender":"Male",
+        "emailAddress":"rari@abc.com",
+        "mobileNumber":8765343212,
+        "coPassengers":[
+            {
+                "firstName":"Sampath",
+                "lastName":"Kumar",
+                 "gender":"Male"
+            },
+              {
+                "firstName":"Gopi",
+                "lastName":"Nath",
+                 "gender":"Male"
+            },
+             {
+                "firstName":"Ritam Sen",
+                "lastName":"Gupta",
+                 "gender":"Male"
+            }
+        ]
+
+    }
+};
+	
+	/*{
+		name: "TestName",	// standard inputs
+		description: "long Description\nMultiline",	// textarea
+		links: [{href:'http://www.gargan.org',description:'Gargan.org'},{href:'http://www.github.com',description:'GitHub'}],	// lists
+		active: true,	// checkbox
+		type: "COOL", // radio (enums)
+		state: "VISIBLE",	// selects (enums)
+		age: 45, // number
+		quips: ["Don't left school interfere with your education!", "Can you repeat the question? I was thinking about cookies.", "In my house I'm the boss, my wife is just the decision maker."]
+	};
+	*/
+
+	// initialize the form, prefix is optional and defaults to data
+	$("#details").jsForm({
+		data:jsonData
+	});
+
+	$("#show").click(function() {
+		// show the json data
+		alert(JSON.stringify($("#details").jsForm("get"), null, " "));
+	});
+});
+</script>
+</head>
+<body><div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="https://www.jqueryscript.net/form/generator-json-schema.html">Download This Plugin</a></li>
+<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul><div id="carbon-block"></div>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+	<div class="container">
+<h1>Simple Form Test</h1>
+<div id="details" class="my-3">
+	<label>Name:</label><input name="data.origin" class="form-control" /><br/>
+	<input type="checkbox" name="data.active"/> active<br/>
+	<label>Age:</label> <input name="data.age" class="number form-control" /><br/>
+	<textarea name="data.description" class="form-control"></textarea><br/>
+	<select name="data.state" class="form-control">
+		<option value="VISIBLE">visible</option>
+		<option value="IMPORTANT">important</option>
+		<option value="HIDDEN">hidden</option>
+	</select>
+	<br/>
+	<input type="radio" name="data.type" value="COOL"/> Cool<br/>
+	<input type="radio" name="data.type" value="HOT"/> Hot<br/>
+	<input type="radio" name="data.type" value="WARM"/> Warm<br/>
+	<fieldset>
+		<legend>Links</legend>
+		<ul class="collection" data-field="data.links">
+			<li><span class="field">links.description</span> Link: <input name="links.href"/> <button class="delete">x</button></li>
+		</ul>
+	</fieldset>
+	<button class="add btn btn-danger" data-field="data.links">add a link</button><br/>
+	Additional field: <input name="data.addedField"/>
+
+	<fieldset>
+		<legend>Quips</legend>
+		<ul class="collection" data-field="data.quips">
+			<li><input name="quips."/></li>
+		</ul>
+		<button class="add btn btn-danger" data-field="data.quips">Add a quip</button><br/>
+	</fieldset>
+
+</div>
+<hr />
+<button id="show" class="btn btn-danger">Show Object</button>
+</div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+</body>
+</html>

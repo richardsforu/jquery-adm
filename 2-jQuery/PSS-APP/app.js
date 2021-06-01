@@ -1,7 +1,8 @@
 $(function () {
     var flights = [];
     var flight = {}
-    var searchQuery ={};
+    var searchQuery = {};
+    var query = {}
     // api server url
     var searchApiUrl = "http://localhost:8080/api/pss/search";
     var bookingApiUrl = "http://localhost:8080/api/pss/booking"
@@ -12,19 +13,21 @@ $(function () {
 
 
     $('#search-query').on('submit', function (e) {
+
         e.preventDefault();
+
         var origin = $('#origin', $(this));
         var destination = $('#destination', $(this));
         var flightDate = $('#flightDate', $(this));
         var travellers = $('#travellers', $(this));
 
-
-         searchQuery = {
+        searchQuery = {
             "origin": origin.val(),
             "destination": destination.val(),
             "flightDate": flightDate.val(),
             "travellers": travellers.val()
         }
+        query = searchQuery;
 
         console.log(searchQuery);
 
@@ -41,7 +44,10 @@ $(function () {
 
         })
 
+
+
         $('#search-results').on('click', '#book-flight', function () {
+
             var id = $(this).closest('div').data('id');
             console.log(id);
 
@@ -50,47 +56,118 @@ $(function () {
                 success: function (response) {
 
                     console.log(response);
-                    flight = response
+                    flight = response;
                     renderBookingForm();
                 }
             })
-
-
-            //  get data dor a flight selected for booking
-
-
         })
+
+    });
+
+    $('#booking-form').on('submit', function (e) {
+
+        e.preventDefault();
+
+        var data = $(this).serializeFields();
+
+
+      //  var obj = $("#booking-form").serializeToJSON();
+            
+            console.log(data);
+       
+       /* var data = $('#booking-form').serializeArray();
+        console.log(data);
+
+        for (var i = 0; i < data.length; ++i) {
+            console.log(data[i].firstName);
+        }
+        */
+
+        /*
+        var cp=[];
+        var loginFormObject = {};
+        $.each(data,
+            function (i, v) {
+                loginFormObject[v.name] = v.value;
+                cp.push(loginFormObject);
+                console.log(loginFormObject);
+
+            });
+         console.log(cp);
+         */
+
+         console.log(">>>>>>>");
+         console.log(flight);
+
+         var copassengers=query.travellers-1;
+
+         var coPassengers=[];
+         var coPassenger={};
+         for(var i=0;i<copassengers;i++){
+            copPassenger={
+                "firstName":$(`#co-firstName${i}`, $(this)).val(),
+                "lastName":$(`#co-lastName${i}`, $(this)).val(),
+                "gender":$(`input[name='co-gender${i}']:checked`).val(),
+            }
+            coPassengers.push(copPassenger);
+
+         }
+         console.log(">>>>> ###  <<<<<<<");
+         console.log(coPassengers);
+        jsonObj = {
+            "origin": query.origin,
+            "destination": query.destination,
+            "flightDate": query.flightDate,
+            "travellers": query.travellers,
+            "flightNumber": flight.flightNumber,
+            "passenger":{
+                "firstName": $('#firstName', $(this)).val(),
+                "lastName": $('#lastName', $(this)).val(),
+                "emailAddress": $('#emailAddress', $(this)).val(),
+                "mobileNumber": $('#mobileNumber', $(this)).val(),
+                "gender": $("input[name='pgen']:checked").val(),
+                "coPassengers":coPassengers
+            }
+
+        }
+
+        $.ajax(bookingApiUrl,{
+            method:"POST",
+            contentType:"application/json",
+            data:JSON.stringify(jsonObj),
+            success:function(response){
+                console.log(response);
+            }
+        })
+        //console.log(">>>>>>");
+       // console.log(jsonObj);
 
     });
 
 
     // render results Template
-
     function renderBookingForm() {
-
         console.log(searchQuery.travellers);
-
-
         var bookingTemplte = `
 
         <br/>
-        <h6>Primary passenger Information</h6>
+        <h3>Primary passenger Information</h3>
         <hr/>
-        <div>
-            <div> 
+       
+             <div> 
                 <label>First Name: </label>
                 <input type="text" id="firstName"> 
-            </div>
+             </div>
 
-            <div> 
+             <div> 
                  <label>Last Name: </label>
                  <input type="text" id="lastName"> 
              </div>
 
              <div>
                  <label>Gender</label>
-                 <input type ="radio" name="pgen"/> Male
-                 <input type ="radio" name="pgen"/> Female
+                 <input type ="radio" name="pgen" class="pgen" value="Male"/> Male
+                 <input type ="radio" name="pgen" class="pgen" value="Female"/> Female
              </div
 
             <div> 
@@ -102,48 +179,49 @@ $(function () {
                  <label>Mobile Number: </label>
                  <input type="text" id="mobileNumber"> 
              </div>
+             <br/>
+
+             <h3>Co-Passenger Information</h3>
              <hr/>
 
-             <h6>Co-Passenger Information
         </div>
         
         `
-
         $('#booking-form').append(bookingTemplte);
 
-        for(var i=0; i< searchQuery.travellers-1; i++){
-           var copsg =`
+        for (var i = 0; i < searchQuery.travellers - 1; i++) {
+            var copsg = `
                <div>
-                    <h6>Passenger ${i+1} Information</h6>
+                    <h5>Passenger ${i + 1} Information</h5>
+                 
                     <div>
                          <label>First Name</label>
-                         <input type ="text" id="co-firstName${i}"/>
+                         <input type ="text" name="firstName" id="co-firstName${i}"/>
                     </div>
+
                     <div>
                          <label>Last Name</label>
-                         <input type ="text" id="co-lastName${i}"/>
+                         <input type ="text" name="lastName" id="co-lastName${i}"/>
                     </div>
 
                     <div>
-                         <label>Gender</label>
-                        <input type ="radio" name="gen"/> Male
-                        <input type ="radio" name="gen"/> Female
+                        <label>Gender</label>
+                        <input type ="radio" name="co-gender${i}" value="Male"/> Male
+                        <input type ="radio" name="co-gender${i}" value="Female"/> Female
                     </div
+                   
+
                </div>
                <br/>
-
            `
-           $('#booking-form').append(copsg);
+            $('#booking-form').append(copsg)
         }
-
-        $('#search-results').remove();
-      
-
-      
+        $('#booking-form').append('<button>Book</button>');
+        $('#search-results').hide();
     }
 
     function renderAllFlights() {
-        //allFlightsDiv.children().remove();
+        allFlightsDiv.children().remove();
         flights.forEach(function (flight) {
             console.log(flight);
             var postTemplate = `
@@ -163,7 +241,10 @@ $(function () {
 
             </div>
             `
-            allFlightsDiv.append(postTemplate);
+            // alert('testt')
+            $('#search-results').append(postTemplate);
+            //$('#booking-form').remove();
+
         })
 
     }

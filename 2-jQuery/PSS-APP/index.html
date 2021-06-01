@@ -8,58 +8,70 @@
 
 <body class="container">
     <div class="alert alert-info text-center">
-        <h1>PSS Application</h1>
+        <h1>Delta Sky Travels</h1>
     </div>
 
     <hr />
 
-    <div class="row">
+    <div class="">
 
-        <div>
-            <form id="search-query">
-                <div>
-                    <label>From</label>
-                    <input type="text" id="origin" value="Delhi"/>
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <form id="search-query">
+                    <div class="row">
+                        <div class="form-group col-3">
+                            <label>From</label>
+                            <input type="text" id="origin" value="Delhi" class="form-control" />
+                        </div>
 
-                <div>
-                    <label>To</label>
-                    <input type="text" id="destination"  value="Chennai"/>
-                </div>
+                        <div class="form-group col-3">
+                            <label>To</label>
+                            <input type="text" id="destination" value="Chennai" class="form-control" />
+                        </div>
 
-                <div>
-                    <label>Date</label>
-                    <input type="text" id="flightDate" value="2021-05-26" />
-                </div>
+                        <div class="form-group col-3">
+                            <label>Date</label>
+                            <input type="text" id="flightDate" value="2021-05-26" class="form-control" />
+                        </div>
 
-                <div>
-                    <label>Travellers</label>
-                    <input type="text" id="travellers" value="2" />
-                </div>
-
-                <div>
-                    <button id="search-btn">Search</button>
-                </div>
-
-            </form>
-
+                        <div class="form-group col-3">
+                            <label>Travellers</label>
+                            <input type="text" id="travellers" value="4" class="form-control" />
+                        </div>
+                        <div class="form-group mt-3 d-flex justify-content-center col-12">
+                            <button class="btn btn-primary text-center" id="search-btn">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+        <br />
+    </div>
+    </div>
 
     </div>
 
-    <div id="search-results">
+    <div id="search-results" class="">
     </div>
 
-    <div id="booking-form">
+    <div class="text-center">
+        <form id="booking-form">
+
+        </form>
+    <hr/>
     </div>
 
-
-
+    <div id="bookingConfirmation">
+        
+    </div>
 
 
 
 
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./jquery-serializeFields.min.js"></script>
+
+
     <script src="./app.js"></script>
 </body>
 
